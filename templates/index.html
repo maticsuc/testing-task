@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Luxonis</title>
+</head>
+<body>
+    <h1>Showing {{ data|length }} items.</h1>
+    {% for id, title, img_urls in data %}
+        <h3>{{ title }}</h3>
+        {% for img_url in img_urls %}
+            <img src="{{ img_url }}">
+        {% endfor %}
+    {% endfor %}
+</body>
+</html>

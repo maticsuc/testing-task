@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  postgresql-db:
+    build:
+      context: .
+      dockerfile: postgresql.Dockerfile
+    ports:
+      - 5432:5432
+  scrapy-spider:
+    build:
+      context: .
+      dockerfile: scrapy.Dockerfile
+    depends_on:
+      - postgresql-db
+    restart: on-failure
+  flask-app:
+    build:
+      context: .
+      dockerfile: flask.Dockerfile
+    ports:
+      - 8080:8080
+    depends_on:
+      postgresql-db:
+        condition: service_started
+      scrapy-spider:
+        condition: service_completed_successfully
+    restart: on-failure
