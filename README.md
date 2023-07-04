@@ -13,5 +13,7 @@ Use scrapy framework to scrape the first 500 items (title, image url) from sreal
 - [flask](flask.Dockerfile)
 
 ## Issues - TODO
-- ~~scrapy spider sometimes scrapes less than 500 items due to not finding the next page link in time?~~ Fixed with Scrapy's [AutoThrottle](https://docs.scrapy.org/en/latest/topics/autothrottle.html) extension
-- in docker-compose it is currently implemented the flask to run after scrapy spider finishes, otherwise the spider hangs and fails to scrape
+- ~~Scrapy spider sometimes scrapes less than 500 items due to not finding the next page link in time?~~
+    - Fixed with Scrapy's [AutoThrottle](https://docs.scrapy.org/en/latest/topics/autothrottle.html) extension
+- In docker-compose it is currently implemented for the Flask to run after scrapy spider finishes, otherwise the spider hangs and fails to scrape
+    - Manually run the flask-app in Docker GUI to see ads on http://127.0.0.1:8080 while the spider scrapes items
