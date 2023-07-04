@@ -2,7 +2,7 @@
 Use scrapy framework to scrape the first 500 items (title, image url) from sreality.cz (flats, sell) and save it in the Postgresql database. Implement a simple HTTP server in Python and show these 500 items on a simple page (title and image) and put everything to single docker-compose command so that "docker-compose up" can be ran in the Github repository and scraped ads are shown on http://127.0.0.1:8080 page. The task is not complex but you need to use different technologies to solve the task - it shows your problem-solving and coding skills.
 
 ## Frameworks used
-- [scrapy](https://scrapy.org/) framework used to scrape 500 items from [sreality.sz](https://www.sreality.cz/)
+- [scrapy](https://scrapy.org/) framework with [playwright](https://github.com/scrapy-plugins/scrapy-playwright) used to scrape 500 items from [sreality.sz](https://www.sreality.cz/)
 - [postgresql](https://www.postgresql.org/) database used to save scraped items
 - [Flask](https://flask.palletsprojects.com/en/2.3.x/) framework used for displaying the scraped items
 
@@ -13,5 +13,5 @@ Use scrapy framework to scrape the first 500 items (title, image url) from sreal
 - [flask](flask.Dockerfile)
 
 ## Issues - TODO
-- scrapy spider sometimes scrapes less than 500 items due to not finding the next page link in time?
+- ~~scrapy spider sometimes scrapes less than 500 items due to not finding the next page link in time?~~ Fixed with Scrapy's [AutoThrottle](https://docs.scrapy.org/en/latest/topics/autothrottle.html) extension
 - in docker-compose it is currently implemented the flask to run after scrapy spider finishes, otherwise the spider hangs and fails to scrape

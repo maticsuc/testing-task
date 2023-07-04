@@ -3,11 +3,12 @@ from luxonis.items import SrealityProperty
 
 class SrealitySpider(scrapy.Spider):
     name = 'sreality'
+    website = "https://www.sreality.cz/en/search/for-sale/houses"
     item_count = 0
     max_count = 500
 
     def start_requests(self):
-        yield scrapy.Request('https://www.sreality.cz/en/search/for-sale/houses', meta={'playwright': True})
+        yield scrapy.Request(self.website, meta={'playwright': True})
 
     async def parse(self, response):
         
